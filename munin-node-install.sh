@@ -78,7 +78,7 @@ printf "\tuse_node_name yes\n\n" >> /tmp/`hostname`.txt
 cd ; rm -fr munin-node.xml*
 
 wget --no-check-certificate https://raw.github.com/scalp42/munin-node-smartos/master/munin-node-joyent.xml
-/usr/sbin/svccfg -v import munin-node.xml
+/usr/sbin/svccfg -v import munin-node-joyent.xml
 rm -fr /var/run/munin/munin-node.pid
 /usr/sbin/svcadm disable application/munin-node
 /usr/sbin/svcadm clear application/munin-node
