@@ -27,7 +27,7 @@ curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 /opt/local/lib/perl5/site_perl/bin/cpanm Carp
 /opt/local/lib/perl5/site_perl/bin/cpanm IO::File IO::Socket::INET6
 /opt/local/lib/perl5/site_perl/bin/cpanm Storable
-/opt/local/lib/perl5/site_perl/bin/cpanm Net::Server Net::Server::Fork Net::SNMP
+/opt/local/lib/perl5/site_perl/bin/cpanm Net::Server Net::Server::Fork Net::SNMP Net::CIDR
 /opt/local/lib/perl5/site_perl/bin/cpanm Module::Build
 /opt/local/lib/perl5/site_perl/bin/cpanm Time::HiRes
 /opt/local/lib/perl5/site_perl/bin/cpanm HTML::Template
