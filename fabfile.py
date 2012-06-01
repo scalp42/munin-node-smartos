@@ -45,4 +45,5 @@ def allow_host():
 	run('chmod +x sed.txt')
 	run('bash sed.txt')
 
-
+def update_muninconf():
+	run('rm -f ~/
