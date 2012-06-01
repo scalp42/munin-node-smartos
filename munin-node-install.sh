@@ -19,6 +19,7 @@ pkgin -y in gcc-compiler gcc-tools
 pkgin -y in pkg_install-info mysql-client-5.5.16 mysql-client-5.5.19 postgresql91-client-9.1.2
 pkgin -y in mysql-client postgresql91-client
 pkgin -y in p5-Net-SSLeay-1.36nb2 libffi-3.0.9nb1 python27-2.7.2nb2 perl-5.14.2nb3 p5-Net-Server-0.99nb2 python27-2.7.2
+pkgin -y in p5-Net-SSLeay libffi perl p5-Net-Server
 
 curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 
