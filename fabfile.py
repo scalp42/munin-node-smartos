@@ -1,7 +1,7 @@
 
 from fabric.api import run, env, put, open_shell, prompt
 
-#env.hosts = ['s-app1', 's-app2', 's-app3', 's-app4', 's-app5', 's-app6', 's-app7']
+env.hosts = ['s-app1', 's-app2', 's-app3', 's-app4', 's-app5', 's-app6', 's-app7']
 
 env.use_ssh_config = True
 
@@ -44,3 +44,5 @@ def allow_host():
 	run('wget --no-check-certificate https://raw.github.com/gist/f57cf673f4dd2bf49579/b15ca6a967c58b51262ebd1f5b340f25bb44cdae/sed.txt')
 	run('chmod +x sed.txt')
 	run('bash sed.txt')
+
+
