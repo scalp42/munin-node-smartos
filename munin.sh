@@ -65,17 +65,22 @@ lineallow=`grep -ne "allow ^" /usr/local/munin/etc/munin-node.conf  | awk -F ':'
 
 sed -i '28 s/^#//' /usr/local/munin/etc/munin-node.conf ;
 awk -v n=$(($lineallow + 1)) -v s='allow ^192\\.168\\.24\\.58$' 'NR == n {print s} {print}' /usr/local/munin/etc/munin-node.conf > /usr/local/munin/etc/munin-node.conf.new
-rm -fr /usr/local/munin/etc/munin-node.conf ; mv /usr/local/munin/etc/munin-node.conf.new /usr/local/munin/etc/munin-node.conf
+rm -f /usr/local/munin/etc/munin-node.conf ; mv /usr/local/munin/etc/munin-node.conf.new /usr/local/munin/etc/munin-node.conf
 
 /usr/local/munin/sbin/munin-node-configure --shell --families=contrib,auto | sh -x
 
-rm -fr /tmp/`hostname`.txt ;
+rm -f /tmp/`hostname`.txt ;
 printf "[`hostname`]\n" > /tmp/`hostname`.txt
 printf "\taddress $ip\n" >> /tmp/`hostname`.txt
 printf "\tuse_node_name yes\n\n" >> /tmp/`hostname`.txt
 
-cd ; rm -fr munin-node.xml
+cd ; rm -fr munin-node.xml*
 
-wget --no-check-certificate 
+wget --no-check-certificate https://raw.github.com/scalp42/munin-node-smartos/master/munin-node.xml
+/usr/sbin/svccfg -v import munin-node.xml
+rm -fr /var/run/munin/munin-node.pid
+/usr/sbin/svcadm disable application/munin-node
+/usr/sbin/svcadm clear application/munin-node
+/usr/sbin/svcadm enable application/munin-node
 
 cd ; rm -fr munin-2.0.0*
