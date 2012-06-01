@@ -46,4 +46,6 @@ def allow_host():
 	run('bash sed.txt')
 
 def update_muninconf():
-	run('rm -f ~/
+	run('rm -f ~/munin-node.conf.example')
+	run('wget --no-check-certificate https://raw.github.com/scalp42/munin-node-smartos/master/munin-node.conf.example')
+	run('mv ~/munin-node.conf.example /usr/local/munin/etc/munin-node.conf')
