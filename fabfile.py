@@ -23,7 +23,7 @@ def prepare_munin():
     run('chmod +x munin-node-install.sh')
 
 def install_munin():
-    run('bash nrpe_install.sh')
+    run('bash munin-node-install.sh')
 
 def clean_munin():
 	run('rm -fr ~/munin-2.0.0*')
