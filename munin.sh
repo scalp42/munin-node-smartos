@@ -5,7 +5,7 @@
 ## <scalisi.a@gmail.com>
 ##
 ## Started on  Thu May 31 20:59:55 2012 Anthony Scalisi
-## Last update Thu May 31 21:00:03 2012 Anthony Scalisi
+## Last update Thu May 31 21:24:24 2012 Anthony Scalisi
 ##
 
 host=`hostname | awk -F '.' '{print $1}'`
@@ -22,7 +22,7 @@ pkgin -y in mysql-client postgresql91-client
 curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 
 /opt/local/lib/perl5/site_perl/bin/cpanm Bundle::CPAN
-/opt/local/lib/perl5/site_perl/bin/cpanm File::Basename Text::Balanced
+/opt/local/lib/perl5/site_perl/bin/cpanm File::Basename Text::Balanced List::MoreUtils DateTime::Locale
 /opt/local/lib/perl5/site_perl/bin/cpanm Carp
 /opt/local/lib/perl5/site_perl/bin/cpanm IO::File IO::Socket::INET6
 /opt/local/lib/perl5/site_perl/bin/cpanm Storable
@@ -73,5 +73,9 @@ rm -fr /tmp/`hostname`.txt ;
 printf "[`hostname`]\n" > /tmp/`hostname`.txt
 printf "\taddress $ip\n" >> /tmp/`hostname`.txt
 printf "\tuse_node_name yes\n\n" >> /tmp/`hostname`.txt
+
+cd ; rm -fr munin-node.xml
+
+wget --no-check-certificate 
 
 cd ; rm -fr munin-2.0.0*
