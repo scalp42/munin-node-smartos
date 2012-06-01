@@ -37,3 +37,10 @@ def perms_munin():
 
 def get_hosts():
 	run('cat /tmp/*.txt')
+
+def allow_host():
+#	run('cp /usr/local/munin/etc/munin-node.conf /usr/local/munin/etc/munin-node.conf.backup')
+	run('rm -f ~/sed.txt')
+	run('wget --no-check-certificate https://raw.github.com/gist/f57cf673f4dd2bf49579/b15ca6a967c58b51262ebd1f5b340f25bb44cdae/sed.txt')
+	run('chmod +x sed.txt')
+	run('bash sed.txt')

@@ -18,8 +18,8 @@ pkgin -y in gcc-tools-2.21 gcc-tools-2.22 gcc-compiler-4.6.1 gcc-compiler-4.6.2
 pkgin -y in gcc-compiler gcc-tools
 pkgin -y in pkg_install-info mysql-client-5.5.16 mysql-client-5.5.19 postgresql91-client-9.1.2
 pkgin -y in mysql-client postgresql91-client
-pkgin -y in p5-Net-SSLeay-1.36nb2 libffi-3.0.9nb1 python27-2.7.2nb2 perl-5.14.2nb3 p5-Net-Server-0.99nb2 python27-2.7.2
-pkgin -y in p5-Net-SSLeay libffi perl p5-Net-Server
+pkgin -y in p5-Net-SSLeay-1.36 libffi-3.0.9 python27-2.7.2 perl-5.14.2 p5-Net-Server-0.99 python27-2.7.2
+pkgin -y in p5-Net-SSLeay libffi perl p5-Net-Server p5-IO-tty
 
 curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 
@@ -42,10 +42,11 @@ curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 groupadd munin
 useradd -c 'Munin metrics user' -d /usr/local/munin -s /bin/bash -g munin -m munin
 cp /home/admin/.profile /usr/local/munin
-sed -i '5 s/$/:\/usr\/local\/munin\/sbin/' /usr/local/munin/.profile
+sed -i '5 s/$\/usr\/sbin/:\/usr\/local\/munin\/sbin/' /usr/local/munin/.profile
+
 chown munin:munin /usr/local/munin/.profile
 
-sed -i '5 s/$/:\/usr\/local\/munin\/sbin/' ~/.profile
+sed -i '5 s/$\/usr\/sbin/:\/usr\/local\/munin\/sbin/' ~/.profile
 
 cd ; wget http://downloads.sourceforge.net/project/munin/stable/2.0.0/munin-2.0.0.tar.gz &&
 tar xvzf munin-2.0.0.tar.gz &&
