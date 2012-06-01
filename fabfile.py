@@ -32,5 +32,5 @@ def restart_munin():
 	run('svcadm disable munin-node')
 	run('svcadm enable munin-node')
 
-def perms_nrpe():
+def perms_munin():
 	run('chown -R munin:munin /usr/local/munin')
