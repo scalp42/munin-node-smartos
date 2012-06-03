@@ -21,6 +21,11 @@ chown -R munin:munin /usr/local/munin/lib/plugins
 
 /usr/local/munin/sbin/munin-node-configure --shell --families=contrib,auto | sh -x
 
+chown -R munin:munin /usr/local/munin/etc/plugins
+
+svcadm disable munin
+svcadm enable munin
+
 rm -f plugins.tar.gz*
 
 rm -f ~/munin-plugins-install.sh*
