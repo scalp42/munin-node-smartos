@@ -1,7 +1,7 @@
 
 from fabric.api import run, env, put, open_shell, prompt
 
-env.hosts = ['s-app1', 's-app2', 's-app3', 's-app4', 's-app5', 's-app6', 's-app7']
+#env.hosts = ['s-app1', 's-app2', 's-app3', 's-app4', 's-app5', 's-app6', 's-app7']
 
 env.use_ssh_config = True
 
