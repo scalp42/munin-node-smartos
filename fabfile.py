@@ -18,6 +18,8 @@ def upload():
 	put(file, remote_dir, mode=0750)
 
 def prepare_munin():
+    run('mkdir -p /plugins/')
+    put('plugin.sh', '/plugins/plugin.sh', mode=0755)
     run('rm -f munin-node*')
     run('wget --no-check-certificate https://raw.github.com/scalp42/munin-node-smartos/master/munin-node-install.sh')
     run('chmod +x munin-node-install.sh')
@@ -49,3 +51,9 @@ def update_muninconf():
 	run('rm -f ~/munin-node.conf.example')
 	run('wget --no-check-certificate https://raw.github.com/scalp42/munin-node-smartos/master/munin-node.conf.example')
 	run('mv ~/munin-node.conf.example /usr/local/munin/etc/munin-node.conf')
+
+def upload_plugins():
+#        run('rm -f /usr/local/munin/lib/plugins/plugin.sh')
+#        put('plugin.sh', '/usr/local/munin/lib/plugins/plugin.sh', mode=0755)
+	run('mkdir -p /plugins/')
+	put('plugin.sh', '/plugins/plugin.sh', mode=0755)

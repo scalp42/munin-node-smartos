@@ -5,7 +5,7 @@
 ## <scalisi.a@gmail.com>
 ##
 ## Started on  Thu May 31 20:59:55 2012 Anthony Scalisi
-## Last update Thu May 31 22:02:16 2012 Anthony Scalisi
+## Last update Mon Jun 11 12:58:33 2012 Anthony Scalisi
 ##
 
 host=`hostname | awk -F '.' '{print $1}'`
@@ -25,7 +25,7 @@ curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 
 /opt/local/lib/perl5/site_perl/bin/cpanm Bundle::CPAN
 /opt/local/lib/perl5/site_perl/bin/cpanm File::Basename Text::Balanced List::MoreUtils DateTime::Locale
-/opt/local/lib/perl5/site_perl/bin/cpanm Carp
+/opt/local/lib/perl5/site_perl/bin/cpanm Carp Switch
 /opt/local/lib/perl5/site_perl/bin/cpanm IO::File IO::Socket::INET6
 /opt/local/lib/perl5/site_perl/bin/cpanm Storable
 /opt/local/lib/perl5/site_perl/bin/cpanm Net::Server Net::Server::Fork Net::SNMP Net::CIDR
@@ -34,9 +34,9 @@ curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 /opt/local/lib/perl5/site_perl/bin/cpanm HTML::Template
 /opt/local/lib/perl5/site_perl/bin/cpanm Log::Log4perl
 /opt/local/lib/perl5/site_perl/bin/cpanm Net::SSLeay
-/opt/local/lib/perl5/site_perl/bin/cpanm Params::Validate
+/opt/local/lib/perl5/site_perl/bin/cpanm Params::Validate DBI DBD::mysql Module::Pluggable
 /opt/local/lib/perl5/site_perl/bin/cpanm CGI::Fast
-/opt/local/lib/perl5/site_perl/bin/cpanm IO::Socket::INET6
+/opt/local/lib/perl5/site_perl/bin/cpanm IO::Socket::INET6 Redis IO::Socket::INET
 /opt/local/lib/perl5/site_perl/bin/cpanm Crypt::DES Digest::MD5 Digest::SHA1 Digest::HMAC
 
 groupadd munin
@@ -84,6 +84,9 @@ wget --no-check-certificate https://raw.github.com/scalp42/munin-node-smartos/ma
 rm -fr /var/run/munin/munin-node.pid
 /usr/sbin/svcadm disable application/munin-node
 /usr/sbin/svcadm clear application/munin-node
+
+sleep 5;
+
 /usr/sbin/svcadm enable application/munin-node
 
 cd ; rm -fr munin-2.0.0*

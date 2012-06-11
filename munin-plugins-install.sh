@@ -9,7 +9,7 @@
 ##
 
 host=`hostname | awk -F '.' '{print $1}'`
-ip=`ifconfig -a | grep 'inet 192' | awk '{print $2}'`
+ip=`ifconfig -a | grep 'inet 192.168' | awk '{print $2}'`
 
 cd /usr/local/munin/lib &&
 
@@ -23,8 +23,8 @@ chown -R munin:munin /usr/local/munin/lib/plugins
 
 chown -R munin:munin /usr/local/munin/etc/plugins
 
-svcadm disable munin
-svcadm enable munin
+svcadm disable munin-node
+svcadm enable munin-node
 
 rm -f plugins.tar.gz*
 
