@@ -48,9 +48,9 @@ chown munin:munin /usr/local/munin/.profile
 
 sed -i '5 s/$\/usr\/sbin/:\/usr\/local\/munin\/sbin/' ~/.profile
 
-cd ; wget http://downloads.sourceforge.net/project/munin/stable/2.0.0/munin-2.0.0.tar.gz &&
-tar xvzf munin-2.0.0.tar.gz &&
-cd munin-2.0.0 &&
+cd ; wget http://downloads.sourceforge.net/project/munin/stable/2.0.2/munin-2.0.2.tar.gz &&
+tar xvzf munin-2.0.2.tar.gz &&
+cd munin-2.0.2 &&
 
 mkdir -p /var/log/munin
 
@@ -89,4 +89,4 @@ sleep 5;
 
 /usr/sbin/svcadm enable application/munin-node
 
-cd ; rm -fr munin-2.0.0*
+cd ; rm -fr munin-2.0*
