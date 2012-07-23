@@ -67,7 +67,7 @@ lineallow=`grep -ne "allow ^" /usr/local/munin/etc/munin-node.conf  | awk -F ':'
 #rm -fr /usr/local/munin/etc/munin-node.conf ; mv /usr/local/munin/etc/munin-node.conf.new /usr/local/munin/etc/munin-node.conf
 
 sed -i '28 s/^#//' /usr/local/munin/etc/munin-node.conf ;
-awk -v n=$(($lineallow + 1)) -v s='allow ^192\\.168\\.24\\.58$' 'NR == n {print s} {print}' /usr/local/munin/etc/munin-node.conf > /usr/local/munin/etc/munin-node.conf.new
+awk -v n=$(($lineallow + 1)) -v s='allow ^192\\.168\\.27\\.1$' 'NR == n {print s} {print}' /usr/local/munin/etc/munin-node.conf > /usr/local/munin/etc/munin-node.conf.new
 rm -f /usr/local/munin/etc/munin-node.conf ; mv /usr/local/munin/etc/munin-node.conf.new /usr/local/munin/etc/munin-node.conf
 
 /usr/local/munin/sbin/munin-node-configure --shell --families=contrib,auto | sh -x
@@ -76,6 +76,11 @@ rm -f /tmp/`hostname`.txt ;
 printf "[`hostname`]\n" > /tmp/`hostname`.txt
 printf "\taddress $ip\n" >> /tmp/`hostname`.txt
 printf "\tuse_node_name yes\n\n" >> /tmp/`hostname`.txt
+
+if [[ `uname -a | grep -i solaris | wc -l` == "1" ]]; then 
+	cd /usr/local/munin/lib/plugins &&
+	sed -i 's/^\( \{2,4\}\)local /\1typeset /' * ;
+fi
 
 cd ; rm -fr munin-node.xml*
 
