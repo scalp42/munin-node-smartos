@@ -23,9 +23,9 @@ pkgin -y in p5-Net-SSLeay libffi perl p5-Net-Server p5-IO-tty
 
 curl -L http://cpanmin.us | perl - --sudo App::cpanminus &&
 
-/opt/local/lib/perl5/site_perl/bin/cpanm -f Bundle::CPAN
+/opt/local/lib/perl5/site_perl/bin/cpanm -f Bundle::CPAN IPC::ShareLite
 /opt/local/lib/perl5/site_perl/bin/cpanm File::Basename Text::Balanced List::MoreUtils DateTime::Locale
-/opt/local/lib/perl5/site_perl/bin/cpanm Carp Switch
+/opt/local/lib/perl5/site_perl/bin/cpanm Carp Switch Cache::Cache
 /opt/local/lib/perl5/site_perl/bin/cpanm IO::File IO::Socket::INET6
 /opt/local/lib/perl5/site_perl/bin/cpanm Storable
 /opt/local/lib/perl5/site_perl/bin/cpanm Net::Server Net::Server::Fork Net::SNMP Net::CIDR
