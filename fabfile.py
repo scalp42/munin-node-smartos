@@ -2,6 +2,7 @@
 from fabric.api import run, env, put, open_shell, prompt
 
 #env.hosts = ['s-app1', 's-app2', 's-app3', 's-app4', 's-app5', 's-app6', 's-app7']
+env.hosts = [ 's-riak0' ]
 
 env.use_ssh_config = True
 
@@ -57,3 +58,9 @@ def upload_plugins():
 #        put('plugin.sh', '/usr/local/munin/lib/plugins/plugin.sh', mode=0755)
 	run('mkdir -p /plugins/')
 	put('plugin.sh', '/plugins/plugin.sh', mode=0755)
+
+def test_riak():
+	run('python /usr/local/munin/etc/plugins/riak_memory')
+	run('svcadm disable munin-node')
+	run('python /usr/local/munin/etc/plugins/riak_node')
+	run('svcadm enable munin-node')
